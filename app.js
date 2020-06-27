@@ -7,15 +7,19 @@ const msg = {
   subject: 'Sending emails  with Twilio SendGrid is so  Fun',
   text: 'It is also easy to do anywhere, even with Node.js',
   html: '<strong>Sending emails as a software engineer is so amazing</strong>'
-}
-//ES6
-sgMail.send(msg).then(
-  () => {},
-  error => {
-    console.error(error)
+};
 
-    if (error.response) {
-      console.error(error.response.body)
+//ES8
+(async () => {
+    try {
+      await sgMail.send(msg);
+    } catch (error) {
+      console.error(error);
+  
+      if (error.response) {
+        console.error(error.response.body)
+      }
     }
-  }
-)
+  })();
+
+  
